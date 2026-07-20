@@ -1,0 +1,995 @@
+/* --- Fonts & Reset --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Inter:wght@400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f4f7f6;
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+}
+
+/* --- MODERN NAVBAR --- */
+.navbar {
+    background: #ffffff;
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-logo a {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+    text-decoration: none;
+}
+
+.nav-logo span { color: #3498db; }
+
+.nav-links { display: flex; gap: 25px; align-items: center; }
+
+.nav-item {
+    text-decoration: none;
+    color: #636e72;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.nav-item:hover { color: #3498db; }
+
+.nav-btn {
+    text-decoration: none;
+    background: #3498db;
+    color: white;
+    padding: 8px 22px;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.nav-btn:hover { background: #2980b9; transform: translateY(-2px); }
+
+/* --- MAIN WRAPPER & TOP SECTION --- */
+.main-wrapper {
+    padding: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.page-title {
+    text-align: center;
+    color: #2c3e50;
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+/* Search Bar Styling (Added to Center) */
+.top-section {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+    padding: 0 20px;
+}
+
+/* --- FORM SECTION (Admin Only) --- */
+.admin-form-card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+    margin-bottom: 40px;
+    max-width: 450px;
+    margin: 0 auto 40px auto;
+    border: 1px solid #eee;
+}
+
+.custom-input {
+    width: 100%;
+    max-width: 500px; /* Search bar ke liye optimized */
+    padding: 12px 20px;
+    margin-bottom: 12px;
+    border: 2px solid #ddd;
+    border-radius: 25px; /* Rounded look */
+    box-sizing: border-box;
+    font-size: 0.95rem;
+    outline: none;
+    transition: 0.3s;
+}
+
+.custom-input:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 8px rgba(52, 152, 219, 0.2);
+}
+
+/* --- COURSE GRID & BOXES --- */
+.course-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.course-box {
+    background: white;
+    border-radius: 16px;
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    border: 1px solid #eee;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.course-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    border-color: #3498db;
+}
+
+.price-tag {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #2ecc71;
+    margin: 15px 0;
+}
+
+/* --- BUTTONS --- */
+.btn-blue { background: #3498db; color: white; border: none; padding: 12px; border-radius: 8px; cursor: pointer; width: 100%; font-weight: bold; transition: 0.3s; }
+.btn-blue:hover { background: #2980b9; transform: scale(1.02); }
+
+.btn-red { background: #e74c3c; color: white; border: none; padding: 10px; border-radius: 8px; cursor: pointer; width: 100%; margin-top: 10px; transition: 0.3s; }
+.btn-red:hover { background: #c0392b; }
+
+.btn-yellow { background: #f1c40f; color: white; border: none; padding: 10px; border-radius: 8px; cursor: pointer; width: 100%; margin-top: 10px; font-weight: bold; transition: 0.3s; }
+
+/* --- MODAL & DETAILS PAGE --- */
+.modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); display: flex; justify-content: center; align-items: center; z-index: 2000; }
+.modal-content { background: white; padding: 30px; border-radius: 20px; width: 90%; max-width: 450px; }
+
+.details-container { max-width: 800px; margin: 40px auto; padding: 20px; }
+.details-card { background: white; padding: 40px; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.08); border: 1px solid #eee; }
+.back-link { color: #3498db; text-decoration: none; font-weight: bold; display: inline-block; margin-bottom: 15px; }
+.btn-buy { background: #2ecc71; color: white; border: none; padding: 15px 40px; border-radius: 8px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: 0.3s; width: auto; }
+.btn-buy:hover { background: #27ae60; transform: scale(1.05); }
+/* --- Admin Enrollment Table Styles --- */
+.student-table-container {
+  margin-top: 40px;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.student-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.student-table th {
+  background-color: #2c3e50;
+  color: white;
+  padding: 12px 15px;
+  text-align: left;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.student-table td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #eee;
+  color: #444;
+  font-size: 0.95rem;
+}
+
+.student-table tr:hover {
+  background-color: #f8f9fa;
+  transition: 0.2s ease-in-out;
+}
+
+.course-badge {
+  background: #e1f5fe;
+  color: #0288d1;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 0.85rem;
+}
+
+/* --- Registration Modal (Popup) Styles --- */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7); /* Thoda dark overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  backdrop-filter: blur(4px); /* Background blur effect */
+}
+
+.modal-content {
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 450px;
+  position: relative;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  animation: slideDown 0.4s ease-out;
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  color: #2c3e50;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.modal-content p {
+  text-align: center;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+/* --- Input Groups & Buttons --- */
+.input-group {
+  margin-bottom: 15px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+  color: #333;
+  font-size: 0.9rem;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.btn-blue-full {
+  flex: 2;
+  background: #3498db;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-blue-full:hover { background: #2980b9; }
+
+.btn-red-outline {
+  flex: 1;
+  background: transparent;
+  color: #e74c3c;
+  border: 2px solid #e74c3c;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-red-outline:hover {
+  background: #e74c3c;
+  color: white;
+}
+
+/* Table ko sundar banane ke liye */
+.student-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background: white;
+}
+
+.student-table th {
+  background-color: #34495e;
+  color: white;
+  padding: 12px;
+  text-align: left;
+}
+
+.student-table td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+}
+
+.student-table tr:hover {
+  background-color: #f1f1f1;
+}
+.btn-tab {
+  padding: 10px 20px;
+  border: 2px solid #3498db;
+  background: white;
+  color: #3498db;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-tab.active {
+  background: #3498db;
+  color: white;
+}
+
+.fade-in {
+  animation: fadeIn 0.4s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.course-box {
+  overflow: hidden;
+  border-radius: 12px;
+  background: white;
+  transition: 0.3s;
+}
+
+.course-box img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.course-content {
+  padding: 15px;
+}
+.course-box {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #eee;
+}
+
+.course-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.status-badge { padding: 4px 8px; border-radius: 12px; font-size: 11px; font-weight: bold; }
+.status-approved { background: #d4edda; color: #155724; }
+.status-pending { background: #fff3cd; color: #856404; }
+.btn-green { background-color: #27ae60; color: white; border: none; border-radius: 4px; cursor: pointer; }
+
+/* Student Table Styling */
+.student-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.student-table th, .student-table td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+}
+
+.student-table th {
+  background-color: #2c3e50;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Status Badges */
+.status-badge {
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.status-approved {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.status-pending {
+  background-color: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeeba;
+}
+
+/* Action Buttons inside Table */
+.btn-green {
+  background: #27ae60;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.btn-green:hover { background: #219150; }
+
+.main-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.page-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 25px;
+}
+
+
+
+
+/* =========================
+   PREMIUM NAVBAR
+========================= */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 16px 40px;
+
+  background: rgba(15, 23, 42, 0.9);
+
+  backdrop-filter: blur(15px);
+
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+
+  box-shadow:
+    0 8px 20px rgba(0,0,0,0.2);
+}
+
+.nav-logo a {
+  text-decoration: none;
+}
+
+.nav-logo span {
+  font-size: 1.8rem;
+  font-weight: 800;
+
+  background: linear-gradient(
+    90deg,
+    #38bdf8,
+    #6366f1
+  );
+   background-clip: text;
+
+  -webkit-background-clip: text;
+  
+  -webkit-text-fill-color: transparent;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-item {
+  text-decoration: none;
+
+  color: #e2e8f0;
+
+  font-weight: 600;
+
+  transition: 0.3s;
+}
+
+.nav-item:hover {
+  color: #38bdf8;
+}
+
+.nav-btn {
+  border: none;
+
+  padding: 10px 20px;
+
+  border-radius: 10px;
+
+  color: white;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  background: linear-gradient(
+    90deg,
+    #ef4444,
+    #dc2626
+  );
+
+  transition: 0.3s;
+}
+
+.nav-btn:hover {
+  transform: translateY(-2px);
+}
+
+.content-area {
+  min-height: calc(100vh - 80px);
+}
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+
+  .navbar {
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+/* ===========================
+   DASHBOARD MAIN
+=========================== */
+
+.dashboard-wrapper{
+    min-height:100vh;
+    padding:30px;
+
+    background:
+    radial-gradient(
+      circle at top left,
+      #312e81,
+      #0f172a 45%
+    );
+
+    color:white;
+}
+
+/* ===========================
+   HEADER
+=========================== */
+.dashboard-header {
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(12px);
+  padding: 30px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.dashboard-title {
+  font-size: 42px;
+  font-weight: 800;
+  color: #ffffff;   /* White */
+  margin-bottom: 10px;
+  letter-spacing: -1px;
+}
+
+.dashboard-subtitle {
+  color: #cbd5e1;
+  font-size: 16px;
+}
+
+.dashboard-subtitle {
+  color: #64748b;
+  font-size: 1rem;
+}
+
+/* ===========================
+   MAIN LAYOUT
+=========================== */
+
+.learning-layout {
+  display: flex;
+  gap: 25px;
+  align-items: flex-start;
+}
+
+/* VIDEO SIDE */
+
+.video-section {
+  flex: 1.7;
+}
+
+/* COURSE SIDE */
+
+.playlist-section {
+  flex: 1;
+}
+.playlist-section{
+    background:#1e293b;
+
+    border-radius:25px;
+
+    padding:20px;
+
+    box-shadow:
+    0 20px 40px rgba(0,0,0,.3);
+}
+/* ===========================
+   VIDEO CARD
+=========================== */
+
+.video-card {
+  background: white;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+
+/* Smaller professional player */
+
+.video-wrapper {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+
+.video-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.video-info {
+  padding: 18px 25px;
+}
+
+.video-info h2 {
+  font-size: 1.2rem;
+  color: #1e293b;
+  font-weight: 600;
+}
+
+/* ===========================
+   COURSE PANEL
+=========================== */
+
+.playlist-section {
+  background: white;
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+
+.playlist-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 20px;
+}
+
+/* ===========================
+   COURSE CARD
+=========================== */
+
+.course-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 15px;
+  overflow: hidden;
+  background: white;
+}
+
+/* Thumbnail Fix */
+
+.course-thumbnail {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  display: block;
+  border-radius: 15px;
+}
+
+.course-content {
+  padding: 18px;
+}
+
+.course-title {
+  font-size: 1.15rem;
+  color: #1e293b;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+/* ===========================
+   PROGRESS
+=========================== */
+
+.progress-section {
+  margin-bottom: 20px;
+}
+
+.progress-top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  color: #475569;
+  font-weight: 600;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 10px;
+  background: #e2e8f0;
+  border-radius: 50px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 50px;
+  background: linear-gradient(
+    90deg,
+    
+    #8b5cf6,
+    #6366f1
+  );
+}
+
+/* ===========================
+   LESSONS
+=========================== */
+
+.lesson-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.lesson-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.lesson-btn {
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: #334155;
+  color: white;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.lesson-btn:hover {
+  background: #4f46e5;
+}
+
+.lesson-btn.completed {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+/* ===========================
+   COMPLETE BUTTON
+=========================== */
+
+.complete-btn {
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 10px;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(
+    90deg,
+    #22c55e,
+    #16a34a
+  );
+  transition: 0.3s;
+}
+
+.complete-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* ===========================
+   EMPTY STATE
+=========================== */
+
+.empty-state {
+  text-align: center;
+  padding: 40px;
+  color: #64748b;
+}
+
+/* ===========================
+   LOADING
+=========================== */
+
+.loading-text {
+  text-align: center;
+  color: #64748b;
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media (max-width: 1000px) {
+
+  .learning-layout {
+    flex-direction: column;
+  }
+
+  .video-section,
+  .playlist-section {
+    width: 100%;
+  }
+
+}
+
+
+
+/* LOGIN PAGE */
+
+.login-container{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding: 40px 20px;
+  background:
+  radial-gradient(circle at top left,
+  #312e81,
+  #0f172a 50%);
+}
+
+.login-card{
+  width:420px;
+
+  background:rgba(255,255,255,.08);
+
+  backdrop-filter:blur(15px);
+
+  border:1px solid rgba(255,255,255,.1);
+
+  border-radius:25px;
+
+  padding:40px;
+
+  box-shadow:
+  0 20px 50px rgba(0,0,0,.35);
+}
+
+.login-title{
+  text-align:center;
+
+  font-size:2rem;
+
+  font-weight:700;
+
+  margin-bottom:30px;
+
+  color:#8b5cf6;
+}
+
+.login-subtitle{
+  text-align:center;
+
+  color:#cbd5e1;
+
+  margin-bottom:25px;
+}
+
+.custom-input{
+  background:rgba(255,255,255,.08);
+
+  border:1px solid rgba(255,255,255,.1);
+
+  color:white;
+}
+
+.custom-input::placeholder{
+  color:#94a3b8;
+}
+
+.btn-blue{
+  background:
+  linear-gradient(90deg,
+  #8b5cf6,
+  #6366f1);
+
+  border:none;
+
+  width:100%;
+
+  color:white;
+
+  font-weight:700;
+
+  padding:14px;
+
+  border-radius:12px;
+}
+.login-input{
+    width:100%;
+
+    padding:14px 18px;
+
+    border:none;
+
+    border-radius:12px;
+
+    margin-bottom:15px;
+
+    background:#1e293b;
+
+    color:white;
+
+    font-size:15px;
+}
+
+.login-input:focus{
+    outline:none;
+    border:1px solid #8b5cf6;
+}
+
+.login-btn{
+    width:100%;
+
+    padding:14px;
+
+    border:none;
+
+    border-radius:12px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    color:white;
+
+    background:linear-gradient(
+      90deg,
+      #8b5cf6,
+      #6366f1
+    );
+
+    transition:.3s;
+}
+
+.login-btn:hover{
+    transform:translateY(-2px);
+}
